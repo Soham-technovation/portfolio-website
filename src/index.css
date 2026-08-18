@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #172033;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'Fira Code', 'Courier New', monospace;
+  }
+}
+
+/* Liquid Glass Utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 40px rgba(30, 60, 100, 0.06), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(23, 105, 224, 0.3);
+  box-shadow: 0 16px 48px rgba(23, 105, 224, 0.1), 0 2px 6px rgba(0, 0, 0, 0.03);
+  transform: translateY(-2px);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+}
+
+/* Liquid Animations */
+@keyframes float-liquid-1 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.08) rotate(120deg);
+    border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
+  }
+  66% {
+    transform: translate(-25px, 25px) scale(0.95) rotate(240deg);
+    border-radius: 30% 70% 70% 30% / 30% 60% 40% 70%;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+}
+
+@keyframes float-liquid-2 {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+    border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+  }
+  50% {
+    transform: translate(-40px, 35px) scale(1.12) rotate(-180deg);
+    border-radius: 40% 60% 30% 70% / 60% 40% 70% 30%;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(-360deg);
+    border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+  }
+}
+
+@keyframes float-liquid-3 {
+  0% {
+    transform: translate(0px, 0px) scale(0.98);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(20px, -30px) scale(1.05);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(0.98);
+    opacity: 0.6;
+  }
+}
+
+@keyframes ece-wave-scan {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-liquid-1 {
+  animation: float-liquid-1 28s ease-in-out infinite;
+}
+
+.animate-liquid-2 {
+  animation: float-liquid-2 36s ease-in-out infinite;
+}
+
+.animate-liquid-3 {
+  animation: float-liquid-3 22s ease-in-out infinite;
+}
+
+.animate-ece-wave {
+  stroke-dasharray: 1000;
+  animation: ece-wave-scan 20s linear infinite;
+}
+
+/* Accessibility: Disable liquid motion when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-liquid-1,
+  .animate-liquid-2,
+  .animate-liquid-3,
+  .animate-ece-wave {
+    animation: none !important;
+  }
+}
+
+/* Engineering Overlay Grids */
+.bg-tech-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(23, 105, 224, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 105, 224, 0.03) 1px, transparent 1px);
+}
+
+.bg-dot-grid {
+  background-size: 24px 24px;
+  background-image: radial-gradient(circle, rgba(23, 105, 224, 0.06) 1px, transparent 1px);
+}
+
+/* Technical Card Standard */
+.tech-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px rgba(30, 60, 100, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(23, 105, 224, 0.35);
+  box-shadow: 0 12px 32px -4px rgba(23, 105, 224, 0.1);
+  transform: translateY(-2px);
+}
+
+.tech-badge-blue {
+  background-color: #dcebff;
+  color: #1769e0;
+  border: 1px solid #bfdbfe;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1769e0;
+}
+
